@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trace2trade/app.dart';
-import 'package:trace2trade/routes/app_routes.dart';
 import 'package:trace2trade/constants/colors.dart';
 
 void main() async {
