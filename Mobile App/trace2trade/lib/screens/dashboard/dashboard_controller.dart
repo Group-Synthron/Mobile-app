@@ -45,3 +45,5 @@ class DashboardController extends GetxController {
     Get.offAllNamed(Routes.LOGIN);
   }
 }
+
+

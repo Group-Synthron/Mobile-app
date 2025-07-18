@@ -10,21 +10,21 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // GetX will find the LoginController instance from the LoginBinding
-    final LoginController controller = Get.find<LoginController>();
+    // Use Get.put() to ensure the controller is created if not found
+    final LoginController controller = Get.put(LoginController());
 
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Obx(() { // Use Obx to rebuild the widget when observables change
+            child: Obx(() {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // App Logo
                   Image.asset(
-                    'assets/fish_logo.png', // Ensure this asset exists
+                    'assets/images/logo.png',
                     height: 100,
                     color: AppColors.textLight,
                   ),
@@ -55,14 +55,13 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Password Input Field
-                  // We use a Stack to overlay the visibility toggle icon
                   Stack(
                     alignment: Alignment.centerRight,
                     children: [
                       CustomInput(
                         controller: controller.passwordController,
                         label: 'Password',
-                        obscureText: controller.isPasswordHidden.value,  // Changed to obscureText
+                        obscureText: controller.isPasswordHidden.value,
                       ),
                       IconButton(
                         icon: Icon(
@@ -79,14 +78,13 @@ class LoginScreen extends StatelessWidget {
 
                   // Login Button
                   if (controller.isLoading.value)
-                    const CircularProgressIndicator() // Show a loader when logging in
+                    const CircularProgressIndicator()
                   else
                     SizedBox(
                       width: double.infinity,
                       child: CustomButton(
                         label: "Login",
                         onPressed: () {
-                          // Call the login method from the controller
                           controller.login();
                         },
                       ),

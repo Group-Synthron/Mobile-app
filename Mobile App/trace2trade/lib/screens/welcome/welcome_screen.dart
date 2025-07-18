@@ -24,7 +24,7 @@ class WelcomeScreen extends StatelessWidget {
               const Spacer(flex: 2),
               // App Logo - Assuming you have an image in assets
               Image.asset(
-                'assets/fish_logo.png', // Make sure you have this asset
+                'assets/images/logo.png', // Make sure you have this asset
                 height: 120,
                 color: Colors.white,
               ),
@@ -40,10 +40,10 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               const Text(
-                "FISH INVENTORY",
+                "Trace 2 Trade",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 36,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                   letterSpacing: 1.2,

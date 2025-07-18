@@ -16,13 +16,13 @@ class DashboardScreen extends StatelessWidget {
         slivers: [
           // A modern, decorative app bar
           SliverAppBar(
-            backgroundColor: AppColors.darkBg,
+            backgroundColor: const Color.fromARGB(255, 7, 100, 107),
             pinned: true,
             expandedHeight: 120.0,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.only(left: 16, bottom: 16),
               title: Text(
-                "FISH INVENTORY",
+                "Trace 2 Trade",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
@@ -78,33 +78,33 @@ class DashboardScreen extends StatelessWidget {
                   // --- Action Buttons ---
                   _buildActionButton(
                     context: context,
-                    iconPath: 'assets/bluetooth_icon.png', // <-- Provide your image asset
+                    iconPath: 'assets/images/bluetooth_icon.png', // <-- Provide your image asset
                     label: "Connect Device",
                     onTap: () => controller.navigateToBluetooth(),
                   ),
                   const SizedBox(height: 20),
                    _buildActionButton(
                     context: context,
-                    iconPath: 'assets/add_catch_icon.png', // <-- Provide your image asset
+                    iconPath: 'assets/images/add_catch_icon.png', // <-- Provide your image asset
                     label: "Add New Catch",
                     onTap: () => controller.navigateToAddCatch(),
                   ),
                   const SizedBox(height: 20),
                   _buildActionButton(
                     context: context,
-                    iconPath: 'assets/contract_icon.png', // <-- Provide your image asset
+                    iconPath: 'assets/images/contract_icon.png', // <-- Provide your image asset
                     label: "Create Smart Contract",
                     onTap: () => controller.navigateToCreateContract(),
                   ),
                   _buildActionButton(
                     context: context,
-                    iconPath: 'assets/qr_code_icon.png', // <-- Provide a new icon
+                    iconPath: 'assets/images/qr_code_icon.png', // <-- Provide a new icon
                     label: "Generate QR Code",
                     onTap: () => Get.toNamed(Routes.QR_GENERATE),
                   ),
                   _buildActionButton(
                     context: context,
-                    iconPath: 'assets/qr_scan_icon.png', // <-- Provide a new icon
+                    iconPath: 'assets/images/qr_scan_icon.png', // <-- Provide a new icon
                     label: "Scan QR Code",
                     onTap: () => Get.toNamed(Routes.QR_SCAN),
                   ),
@@ -152,33 +152,35 @@ class DashboardScreen extends StatelessWidget {
   }
 
   // Helper widget to build the large, icon-based action buttons
-  Widget _buildActionButton({required BuildContext context, required String iconPath, required String label, required VoidCallback onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        decoration: BoxDecoration(
-          color: AppColors.secondaryGray.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.primaryGreen, width: 2)
-        ),
-        child: Row(
-          children: [
-            Image.asset(iconPath, height: 50, width: 50), // Using your image asset
-            const SizedBox(width: 20),
-            Text(
-              label,
-              style: const TextStyle(
-                color: AppColors.textLight,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const Spacer(),
-            const Icon(Icons.arrow_forward_ios, color: AppColors.textLight),
-          ],
-        ),
+ // Helper widget to build the large, icon-based action buttons
+Widget _buildActionButton({required BuildContext context, required String iconPath, required String label, required VoidCallback onTap}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      decoration: BoxDecoration(
+        color: AppColors.secondaryGray.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.primaryGreen, width: 2)
       ),
-    );
-  }
+      child: Row(
+        children: [
+          Image.asset(iconPath, height: 50, width: 50), // <-- This line needs to be updated
+          const SizedBox(width: 20),
+          Text(
+            label,
+            style: const TextStyle(
+              color: AppColors.textLight,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const Spacer(),
+          const Icon(Icons.arrow_forward_ios, color: AppColors.textLight),
+        ],
+      ),
+    ),
+  );
+}
+  
 }
