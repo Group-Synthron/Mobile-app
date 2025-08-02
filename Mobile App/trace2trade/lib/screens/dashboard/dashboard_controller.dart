@@ -22,7 +22,7 @@ class DashboardController extends GetxController {
     // For now, we'll use sample data
     totalCatches.value = 5;
     averageWeight.value = 2.53;
-    lastLocation.value = "45.7606, 14.6325";
+    lastLocation.value = "6.9271, 79.8612";
     syncStatus.value = "Synced just now";
     userName.value = "Admin";
   }
@@ -40,10 +40,13 @@ class DashboardController extends GetxController {
     Get.snackbar("Navigate", "Navigate to Add New Catch Screen");
   }
 
+  // --- New navigation method ---
+  void navigateToInventoryMap() {
+    Get.toNamed(Routes.INVENTORY_MAP);
+  }
+
   void logout() {
     // Handle user logout logic here
     Get.offAllNamed(Routes.LOGIN);
   }
 }
-
-

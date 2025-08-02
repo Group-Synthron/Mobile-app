@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "946784224601",
+    "project_id": "trace2trade",
+    "storage_bucket": "trace2trade.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946784224601:android:c8a44d6d90319b1ec53848",
+        "android_client_info": {
+          "package_name": "com.company.Trace2Trade"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYZdxbgfKgRCwu044GWdhKoomXw4wf5eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

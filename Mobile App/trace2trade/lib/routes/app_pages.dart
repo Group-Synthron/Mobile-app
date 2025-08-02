@@ -1,5 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:trace2trade/routes/app_routes.dart';
+import 'package:trace2trade/screens/Inventory/inventory_map_screen.dart';
 import 'package:trace2trade/screens/bluetooth/bluetooth_screen.dart';
 import 'package:trace2trade/screens/create_contract/create_contract_binding.dart';
 import 'package:trace2trade/screens/create_contract/create_contract_screen.dart';
@@ -49,6 +50,10 @@ class AppPages {
       name: Routes.QR_SCAN,
       page: () => const QrScanScreen(),
       binding: QrScanBinding(),
+    ),
+     GetPage(
+      name: Routes.INVENTORY_MAP,
+      page: () => const InventoryMapScreen(),
     ),
   ];
 }

@@ -9,7 +9,7 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DashboardController controller = Get.find<DashboardController>();
+    final DashboardController controller = Get.put(DashboardController());
 
     return Scaffold(
       body: CustomScrollView(
@@ -49,7 +49,7 @@ class DashboardScreen extends StatelessWidget {
                   _buildStatsCard(
                     title: "Total Catches Today",
                     value: controller.totalCatches.value.toString(),
-                    icon: Icons.catching_pokemon, // Example icon
+                    icon: Icons.catching_pokemon,
                     color: Colors.blueAccent,
                   ),
                   const SizedBox(height: 16),
@@ -77,34 +77,38 @@ class DashboardScreen extends StatelessWidget {
 
                   // --- Action Buttons ---
                   _buildActionButton(
-                    context: context,
-                    iconPath: 'assets/images/bluetooth_icon.png', // <-- Provide your image asset
+                    icon: Icons.bluetooth_connected,
                     label: "Connect Device",
                     onTap: () => controller.navigateToBluetooth(),
                   ),
                   const SizedBox(height: 20),
                    _buildActionButton(
-                    context: context,
-                    iconPath: 'assets/images/add_catch_icon.png', // <-- Provide your image asset
+                    icon: Icons.add_box_outlined,
                     label: "Add New Catch",
                     onTap: () => controller.navigateToAddCatch(),
                   ),
                   const SizedBox(height: 20),
                   _buildActionButton(
-                    context: context,
-                    iconPath: 'assets/images/contract_icon.png', // <-- Provide your image asset
+                    icon: Icons.article_outlined,
                     label: "Create Smart Contract",
                     onTap: () => controller.navigateToCreateContract(),
                   ),
+                  const SizedBox(height: 20),
+                  // --- New Button Added Here ---
                   _buildActionButton(
-                    context: context,
-                    iconPath: 'assets/images/qr_code_icon.png', // <-- Provide a new icon
+                    icon: Icons.map_outlined,
+                    label: "View Inventory Map",
+                    onTap: () => controller.navigateToInventoryMap(),
+                  ),
+                  const SizedBox(height: 20),
+                  _buildActionButton(
+                    icon: Icons.qr_code_2,
                     label: "Generate QR Code",
                     onTap: () => Get.toNamed(Routes.QR_GENERATE),
                   ),
+                   const SizedBox(height: 20),
                   _buildActionButton(
-                    context: context,
-                    iconPath: 'assets/images/qr_scan_icon.png', // <-- Provide a new icon
+                    icon: Icons.qr_code_scanner,
                     label: "Scan QR Code",
                     onTap: () => Get.toNamed(Routes.QR_SCAN),
                   ),
@@ -152,35 +156,33 @@ class DashboardScreen extends StatelessWidget {
   }
 
   // Helper widget to build the large, icon-based action buttons
- // Helper widget to build the large, icon-based action buttons
-Widget _buildActionButton({required BuildContext context, required String iconPath, required String label, required VoidCallback onTap}) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      decoration: BoxDecoration(
-        color: AppColors.secondaryGray.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.primaryGreen, width: 2)
-      ),
-      child: Row(
-        children: [
-          Image.asset(iconPath, height: 50, width: 50), // <-- This line needs to be updated
-          const SizedBox(width: 20),
-          Text(
-            label,
-            style: const TextStyle(
-              color: AppColors.textLight,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
+  Widget _buildActionButton({required IconData icon, required String label, required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        decoration: BoxDecoration(
+          color: AppColors.secondaryGray.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: AppColors.primaryGreen, width: 2)
+        ),
+        child: Row(
+          children: [
+            Icon(icon, size: 30, color: AppColors.textLight),
+            const SizedBox(width: 20),
+            Text(
+              label,
+              style: const TextStyle(
+                color: AppColors.textLight,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          const Spacer(),
-          const Icon(Icons.arrow_forward_ios, color: AppColors.textLight),
-        ],
+            const Spacer(),
+            const Icon(Icons.arrow_forward_ios, color: AppColors.textLight),
+          ],
+        ),
       ),
-    ),
-  );
-}
-  
+    );
+  }
 }
